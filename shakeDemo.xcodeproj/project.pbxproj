@@ -14,6 +14,8 @@
 		FF1864781B3C3AEB004904BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF1864771B3C3AEB004904BE /* Images.xcassets */; };
 		FF18647B1B3C3AEB004904BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1864791B3C3AEB004904BE /* LaunchScreen.xib */; };
 		FF1864871B3C3AEB004904BE /* shakeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864861B3C3AEB004904BE /* shakeDemoTests.m */; };
+		FF1864921B3C3DE6004904BE /* YQActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864911B3C3DE6004904BE /* YQActivityView.m */; };
+		FF1864951B3C55D4004904BE /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		FF1864801B3C3AEB004904BE /* shakeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shakeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1864851B3C3AEB004904BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF1864861B3C3AEB004904BE /* shakeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shakeDemoTests.m; sourceTree = "<group>"; };
+		FF1864901B3C3DE6004904BE /* YQActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQActivityView.h; sourceTree = "<group>"; };
+		FF1864911B3C3DE6004904BE /* YQActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQActivityView.m; sourceTree = "<group>"; };
+		FF1864931B3C55D4004904BE /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
+		FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				FF18646F1B3C3AEB004904BE /* AppDelegate.m */,
 				FF1864711B3C3AEB004904BE /* ViewController.h */,
 				FF1864721B3C3AEB004904BE /* ViewController.m */,
+				FF1864931B3C55D4004904BE /* UIBezierPath+curved.h */,
+				FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */,
+				FF1864901B3C3DE6004904BE /* YQActivityView.h */,
+				FF1864911B3C3DE6004904BE /* YQActivityView.m */,
 				FF1864741B3C3AEB004904BE /* Main.storyboard */,
 				FF1864771B3C3AEB004904BE /* Images.xcassets */,
 				FF1864791B3C3AEB004904BE /* LaunchScreen.xib */,
@@ -220,8 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1864731B3C3AEB004904BE /* ViewController.m in Sources */,
+				FF1864921B3C3DE6004904BE /* YQActivityView.m in Sources */,
 				FF1864701B3C3AEB004904BE /* AppDelegate.m in Sources */,
 				FF18646D1B3C3AEB004904BE /* main.m in Sources */,
+				FF1864951B3C55D4004904BE /* UIBezierPath+curved.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +364,7 @@
 				INFOPLIST_FILE = shakeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "65af734c-88a4-4867-8649-276e9e76363e";
 			};
 			name = Debug;
 		};
@@ -362,6 +375,7 @@
 				INFOPLIST_FILE = shakeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "65af734c-88a4-4867-8649-276e9e76363e";
 			};
 			name = Release;
 		};
