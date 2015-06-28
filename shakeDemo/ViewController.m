@@ -53,7 +53,7 @@
 #pragma mark - 事务方法
 - (void)setupSubviews
 {
-//    [self.shakeView beginZoom];
+    [self.shakeView beginZoom];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateShake) userInfo:nil repeats:YES];
 
 }
