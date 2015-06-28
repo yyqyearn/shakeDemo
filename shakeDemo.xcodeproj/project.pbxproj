@@ -16,6 +16,7 @@
 		FF1864871B3C3AEB004904BE /* shakeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864861B3C3AEB004904BE /* shakeDemoTests.m */; };
 		FF1864921B3C3DE6004904BE /* YQActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864911B3C3DE6004904BE /* YQActivityView.m */; };
 		FF1864951B3C55D4004904BE /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */; };
+		FF2D4EC91B3F11FF00B54B95 /* UIColor+yyq.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2D4EC81B3F11FF00B54B95 /* UIColor+yyq.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		FF1864911B3C3DE6004904BE /* YQActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQActivityView.m; sourceTree = "<group>"; };
 		FF1864931B3C55D4004904BE /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
 		FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
+		FF2D4EC71B3F11FF00B54B95 /* UIColor+yyq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+yyq.h"; sourceTree = "<group>"; };
+		FF2D4EC81B3F11FF00B54B95 /* UIColor+yyq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+yyq.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				FF1864721B3C3AEB004904BE /* ViewController.m */,
 				FF1864931B3C55D4004904BE /* UIBezierPath+curved.h */,
 				FF1864941B3C55D4004904BE /* UIBezierPath+curved.m */,
+				FF2D4EC71B3F11FF00B54B95 /* UIColor+yyq.h */,
+				FF2D4EC81B3F11FF00B54B95 /* UIColor+yyq.m */,
 				FF1864901B3C3DE6004904BE /* YQActivityView.h */,
 				FF1864911B3C3DE6004904BE /* YQActivityView.m */,
 				FF1864741B3C3AEB004904BE /* Main.storyboard */,
@@ -178,6 +183,7 @@
 				TargetAttributes = {
 					FF1864661B3C3AEB004904BE = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = K8K79B6SFC;
 					};
 					FF18647F1B3C3AEB004904BE = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -230,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1864731B3C3AEB004904BE /* ViewController.m in Sources */,
+				FF2D4EC91B3F11FF00B54B95 /* UIColor+yyq.m in Sources */,
 				FF1864921B3C3DE6004904BE /* YQActivityView.m in Sources */,
 				FF1864701B3C3AEB004904BE /* AppDelegate.m in Sources */,
 				FF18646D1B3C3AEB004904BE /* main.m in Sources */,
@@ -361,10 +368,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = shakeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65af734c-88a4-4867-8649-276e9e76363e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -372,10 +381,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = shakeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "65af734c-88a4-4867-8649-276e9e76363e";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -432,6 +443,7 @@
 				FF18648C1B3C3AEB004904BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF18648D1B3C3AEB004904BE /* Build configuration list for PBXNativeTarget "shakeDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +452,7 @@
 				FF18648F1B3C3AEB004904BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -29,7 +29,7 @@
 {
     if (!_cmMotionManager) {
         _cmMotionManager = [[CMMotionManager alloc]init];
-        _cmMotionManager.accelerometerUpdateInterval = 1.0 / 5.0;
+        _cmMotionManager.accelerometerUpdateInterval = 1.0 / 30;
     }
     return _cmMotionManager;
 }
@@ -53,12 +53,13 @@
 #pragma mark - 事务方法
 - (void)setupSubviews
 {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(updateShake) userInfo:nil repeats:YES];
+//    [self.shakeView beginZoom];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateShake) userInfo:nil repeats:YES];
 
 }
 - (void)updateShake
 {
-    [self.shakeView updateWithShakeRank:1];
+    [self.shakeView updateWithShakeRank:ShakeRankN];
 }
 - (void)startShake
 {
@@ -67,7 +68,7 @@
 //    _cmMotionManager = [[CMMotionManager alloc]init];
 //    _cmMotionManager.accelerometerUpdateInterval = 1 / 5.0;
     
-    NSOperationQueue * queue = [NSOperationQueue currentQueue];
+    NSOperationQueue * queue = [NSOperationQueue mainQueue];
     [self.cmMotionManager startAccelerometerUpdatesToQueue:queue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
         float x = fabs(accelerometerData.acceleration.x);
         float y = fabs(accelerometerData.acceleration.y);
@@ -81,9 +82,9 @@
             shakeRank = ShakeRankA;
         }else if (sum<2.5){
             shakeRank = ShakeRankB;
-        }else if (sum<4){
+        }else if (sum<3){
             shakeRank = ShakeRankC;
-        }else if (sum<7){
+        }else if (sum<5){
             shakeRank = ShakeRankD;
         }else{
             shakeRank = ShakeRankE;
@@ -91,10 +92,11 @@
         
         NSLog(@"摇晃等级 = %i",shakeRank);
         
-        dispatch_async(dispatch_get_main_queue(), ^{
             self.shakeRankLabel.text = [NSString stringWithFormat:@"摇晃等级 = %i",shakeRank];
             [self.shakeView updateWithShakeRank:shakeRank];
-        });
+
+        
+        
     }];
 }
 

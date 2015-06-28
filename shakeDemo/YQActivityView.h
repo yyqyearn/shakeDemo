@@ -17,4 +17,6 @@ typedef NS_ENUM(NSInteger, ShakeRank) {
 };
 @interface YQActivityView : UIView
 - (void)updateWithShakeRank:(NSInteger)shakeRank;
+- (void)beginZoom;
+
 @end
