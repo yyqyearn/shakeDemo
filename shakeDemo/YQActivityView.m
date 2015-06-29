@@ -51,7 +51,7 @@
 }
 - (int)linesCount{
     if (_linesCount==0) {
-        _linesCount = 6;
+        _linesCount = 2;
     }
     return _linesCount;
 }
