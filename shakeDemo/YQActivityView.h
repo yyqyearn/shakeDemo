@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, ShakeRank) {
     ShakeRankE
 };
 @interface YQActivityView : UIView
+@property (assign, nonatomic,getter=isZooming) BOOL zoomAnimation;
+
 - (void)updateWithShakeRank:(NSInteger)shakeRank;
 - (void)beginZoom;
 

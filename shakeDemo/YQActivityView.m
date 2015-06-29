@@ -24,21 +24,30 @@
 
 @property (strong, nonatomic) NSArray *colorHexs;
 
-
 @property (assign, nonatomic) int linesCount;
 
-@property (assign, nonatomic) BOOL zoomAnimation;
+@property (nonatomic, strong) UIView *contentView;
 
 @end
 
 @implementation YQActivityView
+
+- (UIView *)contentView
+{
+    if (!_contentView) {
+        _contentView = [[UIView alloc]initWithFrame:self.bounds];
+        _contentView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_contentView];
+    }
+    return _contentView;
+}
 - (void)beginZoom{
     self.zoomAnimation = YES;
-    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.transform = CGAffineTransformMakeScale(1.25, 1.25);
+    [UIView animateWithDuration:0.1 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.contentView.layer.transform = CATransform3DMakeScale(1.25, 1.25,1);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.9 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                    self.transform = CGAffineTransformIdentity;
+                    self.contentView.layer.transform = CATransform3DIdentity;
         } completion:^(BOOL finished) {
             if (self.zoomAnimation) {
                 [self beginZoom];
@@ -127,21 +136,22 @@
 
 - (void)updateWithShakeRank:(NSInteger)shakeRank
 {
+    if (self.shakeRank==shakeRank&&shakeRank>ShakeRankC) {
+        return;
+    }
     self.shakeRank = shakeRank;
     self.points = nil;
-    [self setNeedsDisplay];
+    [self updateTheLines];
 }
 
-
-- (void)drawRect:(CGRect)rect {
-
+- (void)updateTheLines{
     self.lineLayers = nil;
-   
+    
     //初始化路径
     UIBezierPath *bezPath = [UIBezierPath bezierPath];
     bezPath.lineCapStyle = kCGLineCapRound;//拐角处理
     bezPath.lineJoinStyle = kCGLineCapRound;//终点处理
-
+    
     
     for (int i = 0; i < self.points.count; i ++) {
         NSValue * aPointValue = self.points[i];
@@ -151,21 +161,19 @@
         }else{
             [bezPath addLineToPoint:point];
         }
-        
     }
-    
     
     [bezPath closePath];
     bezPath = [bezPath smoothedPathWithGranularity:20];
-
+    
     //渐隐消失的时间，与rank有关
     CGFloat dur = 0;
     if (self.shakeRank < ShakeRankC) {
-      dur = 0.2;
+        dur = 0.2;
     }else if (self.shakeRank < ShakeRankD){
         dur = 0.3;
     }else{
-        dur = 1;
+        dur = 0.7;
     }
     
     
@@ -174,27 +182,30 @@
         contentLayer.fillColor = [UIColor clearColor].CGColor;
         contentLayer.frame = self.bounds;
         contentLayer.strokeColor = [UIColor colorWithHexString:self.colorHexs[self.colorHexs.count-i-1]].CGColor;
-        contentLayer.lineWidth = 1.3;
+        contentLayer.lineWidth = 1;
         contentLayer.path = bezPath.CGPath;
         
         CGFloat trans = 1+0.15*i;
         contentLayer.transform = CATransform3DMakeScale(trans, trans, 1);
         
-        [self.layer addSublayer:contentLayer];
+        [self.contentView.layer addSublayer:contentLayer];
         [self.lineLayers addObject:contentLayer];
         
-            CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-            opacityAnimation.fromValue = [NSNumber numberWithFloat:1.0];
-            opacityAnimation.toValue = [NSNumber numberWithFloat:0];
-            opacityAnimation.duration = dur;
-            [contentLayer addAnimation:opacityAnimation forKey:@"opacity"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dur * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [contentLayer removeFromSuperlayer];
-            });
-
-        
+        CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        opacityAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+        opacityAnimation.toValue = [NSNumber numberWithFloat:0];
+        opacityAnimation.duration = dur;
+        [contentLayer addAnimation:opacityAnimation forKey:@"opacity"];
+        [contentLayer performSelector:@selector(removeFromSuperlayer) withObject:nil afterDelay:dur];
     }
 
+}
+- (void)drawRect:(CGRect)rect {
+
+   //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dur * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.lineLayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+//    });
+    
 //    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 //    opacityAnimation.fromValue = [NSNumber numberWithFloat:1.0];
 //    opacityAnimation.toValue = [NSNumber numberWithFloat:0];
@@ -219,14 +230,18 @@
     
 //    [bezPath stroke];
     
-//    //2.圆形
-//    UIColor *pathColorA = [UIColor greenColor];
-//    [pathColorA set];
-//    CGRect rectA = CGRectMake(100, 100, 100, 200);
-//    
-//    UIBezierPath *bezPathA = [UIBezierPath bezierPathWithOvalInRect:rectA];
-//    [bezPathA stroke];
+    //2.圆形
+    UIColor *pathColorA = [UIColor greenColor];
+    [pathColorA set];
     
+    CGPoint center = CGPointMake(self.bounds.size.width*0.5, self.bounds.size.height*0.5);
+    CGFloat x = center.x - 42;
+    CGFloat y = center.y - 42;
+    CGFloat w = 42*2;
+    CGFloat h = w;
+    CGRect rectA = CGRectMake(x, y, w, h);
+    UIBezierPath *bezPathA = [UIBezierPath bezierPathWithOvalInRect:rectA];
+    [bezPathA stroke];
 }
 
 -(int)getRandomNumber:(int)from to:(int)to

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -26,7 +27,7 @@
                                     <action selector="startBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sbz-5J-JQe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-tE-Aep">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-tE-Aep">
                                 <rect key="frame" x="269" y="538" width="30" height="30"/>
                                 <state key="normal" title="End">
                                     <color key="titleColor" red="0.011764705882352941" green="0.68235294117647061" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,9 +51,11 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="luO-Jb-xo3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="36" id="36d-4V-Dko"/>
+                            <constraint firstItem="Foh-tE-Aep" firstAttribute="centerY" secondItem="NSK-rc-Zz1" secondAttribute="centerY" id="Gf5-QA-kKx"/>
                             <constraint firstItem="NSK-rc-Zz1" firstAttribute="top" secondItem="luO-Jb-xo3" secondAttribute="bottom" constant="68" id="XzI-7P-eA1"/>
                             <constraint firstItem="NSK-rc-Zz1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="45" id="mW5-0C-Aa5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NSK-rc-Zz1" secondAttribute="bottom" constant="99" id="oMn-YA-0ju"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Foh-tE-Aep" secondAttribute="trailing" constant="60" id="y2Q-z9-wh8"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
