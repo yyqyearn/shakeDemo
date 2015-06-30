@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import <CoreMotion/CoreMotion.h>
-#import <math.h>
+//#import <math.h>
 
 #import "YQActivityView.h"
 
@@ -104,8 +104,6 @@
             [self.shakeView updateWithShakeRank:shakeRank];
 //        });
 
-        
-        
     }];
 }
 
